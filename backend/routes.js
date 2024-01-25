@@ -2,7 +2,7 @@
 const express = require('express')
 const router = express.Router()
 
-// bithdays
+// bithday model
 const Birthday = require('./birthdaySchema')
 
 // GET all bithdays

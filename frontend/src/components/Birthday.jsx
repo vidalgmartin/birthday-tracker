@@ -20,6 +20,7 @@ export default function Birthday() {
                 <div className="birthday-item" key={birthday._id}>
                     <div className="birthday-name">
                         <p>{birthday.name}</p>
+                        <p>{birthday.birthday}</p>
                     </div>
                 </div>
             ))}

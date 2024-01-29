@@ -27,7 +27,7 @@ router.post('/birthdays', async (req, res) => {
         const createBirthday = await Birthday.create({ name, birthday })
 
         res.status(200).json(createBirthday)
-    } catch (errror) {
+    } catch (error) {
         console.error(error)
         res.status(500).json({ message: 'Internal Server Error' })
     }

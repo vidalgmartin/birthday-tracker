@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // pages
 import Home from './pages/Home'
-import BirthdayList from './pages/BirthdayList'
+import TaskList from './pages/TaskList'
 
 // components
 import Navbar from './components/Navbar'
@@ -22,8 +22,8 @@ export default function App() {
               element={<Home />}
             />
             <Route 
-              path="/birthdays"
-              element={<BirthdayList />}
+              path="/tasks"
+              element={<TaskList />}
             />
           </Routes>
         </div>

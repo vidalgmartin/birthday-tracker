@@ -78,7 +78,7 @@ body {
     max-width: 200px;
 }
 
-.birthday-page-container {
+.task-page-container {
     display: flex;
     justify-content: center;
     align-items: top;
@@ -87,7 +87,7 @@ body {
     border: 1px solid black;
 }
 
-.birthday-elements {
+.task-elements {
     display: grid;
     place-items: center;
     width: 675px;
@@ -95,7 +95,7 @@ body {
     border: 1px solid black;
 }
 
-.birthday-form-container {
+.task-form-container {
     display: grid;
     place-items: center;
     width: 675px;

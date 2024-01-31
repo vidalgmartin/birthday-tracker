@@ -12,8 +12,8 @@ export default function Navbar() {
                     <Link to="/">
                         <h3>Home</h3>
                     </Link>
-                    <Link to="/birthdays">
-                        <h3>Birthday List</h3>
+                    <Link to="/tasks">
+                        <h3>Task List</h3>
                     </Link>
                 </div>
             </div>

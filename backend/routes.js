@@ -2,48 +2,48 @@
 const express = require('express')
 const router = express.Router()
 
-// bithday model
-const Birthday = require('./birthdaySchema')
+// task model
+const Task = require('./taskSchema')
 
-// GET all bithdays
-router.get('/birthdays', async (req, res) => {
+// GET all tasks
+router.get('/tasks', async (req, res) => {
     try {
 
-        // query through database and retrieve all birthday objects
-        const birthdays =  await Birthday.find()
+        // query through database and retrieve all task objects
+        const tasks =  await Task.find()
 
-        res.json(birthdays)
+        res.json(tasks)
     }  catch (error) {
         console.error(error)
         res.status(500).json({  message: 'Internal Server Error' })
     }
 })
 
-// POST a collection
-router.post('/birthdays', async (req, res) => {
-    const { name, birthday } = req.body
+// POST a task
+router.post('/tasks', async (req, res) => {
+    const { task } = req.body
 
     try {
-        const createBirthday = await Birthday.create({ name, birthday })
+        const createTask = await Task.create({ task })
 
-        res.status(200).json(createBirthday)
+        res.status(200).json(createTask)
     } catch (error) {
         console.error(error)
         res.status(500).json({ message: 'Internal Server Error' })
     }
 })
 
-// PATCH a birthday
-router.patch('/birthdays/:id', async (req, res) => {
+// PATCH a task
+router.patch('/tasks/:id', async (req, res) => {
     const { id } = req.params
     const updatedData = req.body
 
     try {
-        const updatedBirthday = await Birthday.findByIdAndUpdate(id, { ...updatedData })
+        const updatedTask = await Task.findByIdAndUpdate(id, { ...updatedData })
 
-        res.status(200).json(updatedBirthday)
-        if (!updatedBirthday) {
-            return res.status(404).json({ message: 'No birthday found' })
+        res.status(200).json(updatedTask)
+        if (!updatedTask) {
+            return res.status(404).json({ message: 'No task found' })
         }
     } catch (error) {
         console.error(error)
@@ -51,18 +51,18 @@ router.patch('/birthdays/:id', async (req, res) => {
     }
 })
 
-// DELETE a birthday
-router.delete('/birthdays/:id', async (req, res) => {
+// DELETE a task
+router.delete('/tasks/:id', async (req, res) => {
     const { id } = req.params
 
     try {
-        const deletedBirthday = await Birthday.findByIdAndDelete(id)
+        const deletedTask = await Task.findByIdAndDelete(id)
 
-        if (!deletedBirthday) {
-            return res.status(404).json({ message: 'No birthday found' })
+        if (!deletedTask) {
+            return res.status(404).json({ message: 'No task found' })
         }
         
-        res.json(deletedBirthday)
+        res.json(deletedTask)
     } catch (error) {
         console.error(error)
         res.status(500).json({ message: 'Internal Server Error' })

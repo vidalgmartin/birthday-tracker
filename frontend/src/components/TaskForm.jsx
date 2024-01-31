@@ -1,61 +1,50 @@
 import { useState } from 'react'
 
-export default function BirthdayForm() {
-    const  [ name, setName ] = useState('')
-    const [ birthday, setBirthday ] = useState('')
+export default function TaskForm() {
+    const [ task, setTask ] = useState('')
     const [ error, setError ] = useState(null)
     
     const handleSubmit = async (e) =>  {
         e.preventDefault()
 
-        if(!name || !birthday) {
+        if(!task) {
             setError('Please fill in the blanks')
             return
         }
 
-        const response = await fetch('/api/birthdays', {
+        const response = await fetch('/api/tasks', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, birthday })
+            body: JSON.stringify({ task })
         })
 
         if(!response.ok) {
-            console.error('Failed to submit birthday')
+            console.error('Failed to submit task')
             return
         }
         else {
             // extract and parse the json data for a cleaner response
             const json = await response.json()
 
-            setName('')
-            setBirthday('')
+            setTask('')
             setError(null)
             console.log('Submitted successfully:', json);
         }
     }
 
     return (
-        <div className="birthday-form-container">
+        <div className="task-form-container">
 
             <form onSubmit={handleSubmit}>
-                <label>Name:</label>
+                <label>Task:</label>
                 <input
-                    className="name-input"
+                    className="task-input"
                     type="text"
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
+                    onChange={(e) => setTask(e.target.value)}
+                    value={task}
                 />
-
-                <label>Birthday:</label>
-                <input
-                    className="birthday-input"
-                    type="text"
-                    onChange={(e) => setBirthday(e.target.value)}
-                    value={birthday}
-                />
-
                 <button>Submit</button>
                 {error && <div className="error">{error}</div>}
             </form>

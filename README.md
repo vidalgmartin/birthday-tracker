@@ -1,2 +1,2 @@
 # todo-app
-web application create, update and delete tasks.
+web application to create, update and delete tasks.

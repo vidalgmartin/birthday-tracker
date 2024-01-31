@@ -1,2 +1,2 @@
-# birthday-tracker
-web application to track birthdays
+# todo-app
+web application create, update and delete tasks

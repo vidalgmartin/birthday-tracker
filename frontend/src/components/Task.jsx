@@ -25,16 +25,29 @@ export default function Task() {
 
         fetchTasks()
     }, [])
+
+    const handleDelete =  async (taskId)  => {
+        await fetch(`/api/tasks/${taskId}`, {
+            method: 'DELETE'
+        })
+    }
     
     return (
         <>
-            {tasks && tasks.map((task) => (
-                <div className="task-item" key={task._id}>
-                    <div className="task-name">
-                        <p>{task.task}</p>
+            {tasks && tasks.length > 0 ? (
+                (tasks && tasks.map((task) => (
+                    <div className="task-item" key={task._id}>
+                        <div className="task-name">
+                            <p>{task.task}</p>
+                        </div>
+                        <button className="task-delete" onClick={() => handleDelete(task._id)}>
+                            Delete
+                        </button>
                     </div>
-                </div>
-            ))}
+                )))
+                ) :  (
+                    <p>Add a task!</p>
+            )}
         </>
     )
 }

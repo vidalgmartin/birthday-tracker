@@ -5,6 +5,11 @@ const taskSchema = new  mongoose.Schema({
     task: {
         type: String,
         required: true
+    },
+    checkmark: {
+        type: Boolean,
+        default: false,
+        required: false
     }
 })
 

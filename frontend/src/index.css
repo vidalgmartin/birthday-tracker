@@ -18,7 +18,7 @@ body {
 }
 
 /* 
- * Navbar
+ * navbar
  */
 .navbar {
     display: flex;
@@ -78,7 +78,7 @@ body {
     max-width: 200px;
 }
 
-.task-page-container {
+.task-page {
     display: flex;
     justify-content: center;
     align-items: top;
@@ -87,7 +87,17 @@ body {
     border: 1px solid black;
 }
 
-.task-elements {
+.task-page-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+ * task
+ */
+ .task-form-container {
     display: grid;
     place-items: center;
     width: 675px;
@@ -95,10 +105,15 @@ body {
     border: 1px solid black;
 }
 
-.task-form-container {
-    display: grid;
-    place-items: center;
+.task-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 675px;
 
     border: 1px solid black;
+}
+
+.task-container input {
+    border: 2px;
 }

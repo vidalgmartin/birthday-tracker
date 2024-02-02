@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 export default function Task() {
     const [tasks, setTasks] = useState([])
+    const [ checkbox, setCheckbox ] = useState(false)
 
     useEffect(() => {
         const fetchTasks = async () => {
@@ -31,15 +32,34 @@ export default function Task() {
             method: 'DELETE'
         })
     }
+
+    const handleCheckbox = async (taskId) => {
+        const response = await fetch(`/api/tasks/${taskId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                checkmark: true
+            })
+        })
+
+        if(response.ok) {
+            const json = await response.json()
+            console.log(json.checkmark)
+        }
+    }
     
     return (
         <>
             {tasks && tasks.length > 0 ? (
                 (tasks && tasks.map((task) => (
-                    <div className="task-item" key={task._id}>
-                        <div className="task-name">
-                            <p>{task.task}</p>
-                        </div>
+                    <div className="task-container" key={task._id}>
+                        <label>
+                            <input type="checkbox" onClick={() => handleCheckbox(task._id)}/>
+                            {task.task}
+                        </label>
+
                         <button className="task-delete" onClick={() => handleDelete(task._id)}>
                             Delete
                         </button>

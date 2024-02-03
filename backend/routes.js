@@ -5,14 +5,26 @@ const router = express.Router()
 // task model
 const Task = require('./taskSchema')
 
-// GET all tasks
+// GET all uncompleted tasks
 router.get('/tasks', async (req, res) => {
     try {
-
         // query through database and retrieve all task objects
-        const tasks =  await Task.find()
+        const tasks =  await Task.find({ completed: false })
 
         res.json(tasks)
+    }  catch (error) {
+        console.error(error)
+        res.status(500).json({  message: 'Internal Server Error' })
+    }
+})
+
+// GET all completed tasks
+router.get('/completedTasks', async (req, res) => {
+    try {
+        // query through database and retrieve all completed task objects
+        const completedTasks = await Task.find({ completed: true });
+
+        res.json(completedTasks);
     }  catch (error) {
         console.error(error)
         res.status(500).json({  message: 'Internal Server Error' })

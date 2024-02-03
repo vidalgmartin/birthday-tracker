@@ -92,6 +92,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 675px;
+
+    border: 1px solid black;
 }
 
 /*
@@ -116,4 +119,13 @@ body {
 
 .task-container input {
     border: 2px;
+}
+
+.completed-task-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 675px;
+
+    border: 1px solid black;
 }

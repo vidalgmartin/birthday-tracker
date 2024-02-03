@@ -6,7 +6,7 @@ const taskSchema = new  mongoose.Schema({
         type: String,
         required: true
     },
-    checkmark: {
+    completed: {
         type: Boolean,
         default: false,
         required: false

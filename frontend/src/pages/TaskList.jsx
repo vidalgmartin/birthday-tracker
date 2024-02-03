@@ -1,5 +1,6 @@
-import Task from '../components/Task'
-import TaskForm from '../components/TaskForm'
+import Task from '../components/task/Task'
+import TaskForm from '../components/task/TaskForm'
+import CompletedTasks from '../components/task/CompletedTasks'
 
 export default function TaskList() {
     
@@ -8,6 +9,7 @@ export default function TaskList() {
             <TaskForm />
             <div className="task-page-list">
                 <Task />
+                <CompletedTasks />
             </div>
         </div>
     )

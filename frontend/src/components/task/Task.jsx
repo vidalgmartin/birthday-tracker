@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 
 export default function Task() {
     const [tasks, setTasks] = useState([])
-    const [ checkbox, setCheckbox ] = useState(false)
 
     useEffect(() => {
         const fetchTasks = async () => {
@@ -27,10 +26,12 @@ export default function Task() {
         fetchTasks()
     }, [])
 
-    const handleDelete =  async (taskId)  => {
+    const handleDelete = async (taskId)  => {
         await fetch(`/api/tasks/${taskId}`, {
             method: 'DELETE'
         })
+        // update state after removing task
+        setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
     }
 
     const handleCheckbox = async (taskId) => {
@@ -40,23 +41,28 @@ export default function Task() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                checkmark: true
+                completed: true
             })
         })
 
-        if(response.ok) {
-            const json = await response.json()
-            console.log(json.checkmark)
+        if(!response.ok) {
+            console.error('Failed to update task')
+            
+            return
+        }
+        else {
+            setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
         }
     }
     
     return (
         <>
+            <h3>Tasks</h3>
             {tasks && tasks.length > 0 ? (
-                (tasks && tasks.map((task) => (
+                tasks.map((task) => (
                     <div className="task-container" key={task._id}>
                         <label>
-                            <input type="checkbox" onClick={() => handleCheckbox(task._id)}/>
+                            <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked={false} readOnly />
                             {task.task}
                         </label>
 
@@ -64,9 +70,9 @@ export default function Task() {
                             Delete
                         </button>
                     </div>
-                )))
-                ) :  (
-                    <p>Add a task!</p>
+                ))
+                ) : (
+                    <p>No new tasks</p>
             )}
         </>
     )

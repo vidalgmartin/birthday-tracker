@@ -1,79 +1,61 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
+import UncompletedTasks from './UncompletedTasks'
+import CompletedTasks from './CompletedTasks'
+import TaskForm from './TaskForm'
 
 export default function Task() {
-    const [tasks, setTasks] = useState([])
+    const [uncompletedTasks, setUncompletedTasks] = useState([])
+    const [completedTasks, setCompletedTasks] = useState([])
 
-    useEffect(() => {
-        const fetchTasks = async () => {
-            const response = await fetch('/api/tasks', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+    const fetchTasks = async () => {
 
-            if(!response.ok) {
-                console.error('Failed to fetch tasks')
+        const uncompletedResponse = await fetch('/api/uncompletedTasks')
+        const completedResponse = await fetch('/api/completedTasks')
 
-                return
-            }
-            else {
-                const data =  await response.json()
-                setTasks(data)
-            }
+        if (!uncompletedResponse.ok || !completedResponse.ok) {
+            console.error('Failed to fetch tasks')
+
+            return
+        } else {
+            const uncompletedData = await uncompletedResponse.json()
+            const completedData = await completedResponse.json()
+
+            setUncompletedTasks(uncompletedData)
+            setCompletedTasks(completedData)
         }
+    }
 
+    // the useEffect hooks ensures that the fetch function is called after the intial render and only once
+    useEffect(() => {
         fetchTasks()
     }, [])
 
-    const handleDelete = async (taskId)  => {
-        await fetch(`/api/tasks/${taskId}`, {
-            method: 'DELETE'
-        })
-        // update state after removing task
-        setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
+    const updateUncompletedTasks = async (newTasks) => {
+        setUncompletedTasks(newTasks)
+
+        await fetchTasks()
     }
 
-    const handleCheckbox = async (taskId) => {
-        const response = await fetch(`/api/tasks/${taskId}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                completed: true
-            })
-        })
+    const updateCompletedTasks = async (newTasks) => {
+        setCompletedTasks(newTasks)
 
-        if(!response.ok) {
-            console.error('Failed to update task')
-            
-            return
-        }
-        else {
-            setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
-        }
+        await fetchTasks()
     }
-    
+
     return (
         <>
-            <h3>Tasks</h3>
-            {tasks && tasks.length > 0 ? (
-                tasks.map((task) => (
-                    <div className="task-container" key={task._id}>
-                        <label>
-                            <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked={false} readOnly />
-                            {task.task}
-                        </label>
+            <div className="task-components">
 
-                        <button className="task-delete" onClick={() => handleDelete(task._id)}>
-                            Delete
-                        </button>
-                    </div>
-                ))
-                ) : (
-                    <p>No new tasks</p>
-            )}
+                <div>
+                    <TaskForm updateTasks={updateUncompletedTasks} />
+                </div>
+
+                <div>
+                    <UncompletedTasks tasks={uncompletedTasks} updateTasks={updateUncompletedTasks} />
+                    <CompletedTasks tasks={completedTasks} updateTasks={updateCompletedTasks} />
+                </div>
+                
+            </div>
         </>
     )
 }

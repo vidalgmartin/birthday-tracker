@@ -87,19 +87,15 @@ body {
     border: 1px solid black;
 }
 
-.task-page-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 675px;
-
-    border: 1px solid black;
-}
-
 /*
  * task
  */
+ .task-components {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
  .task-form-container {
     display: grid;
     place-items: center;
@@ -108,17 +104,13 @@ body {
     border: 1px solid black;
 }
 
-.task-container {
+.uncompleted-task-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 675px;
 
     border: 1px solid black;
-}
-
-.task-container input {
-    border: 2px;
 }
 
 .completed-task-container {

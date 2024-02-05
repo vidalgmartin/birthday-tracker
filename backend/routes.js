@@ -6,7 +6,7 @@ const router = express.Router()
 const Task = require('./taskSchema')
 
 // GET all uncompleted tasks
-router.get('/tasks', async (req, res) => {
+router.get('/uncompletedTasks', async (req, res) => {
     try {
         // query through database and retrieve all task objects
         const tasks =  await Task.find({ completed: false })

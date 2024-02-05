@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function TaskForm() {
+export default function TaskForm({ updateTasks }) {
     const [ task, setTask ] = useState('')
     const [ error, setError ] = useState(null)
     
@@ -30,6 +30,8 @@ export default function TaskForm() {
 
             setTask('')
             setError(null)
+
+            updateTasks(() => {})
             console.log('Submitted successfully:', json);
         }
     }

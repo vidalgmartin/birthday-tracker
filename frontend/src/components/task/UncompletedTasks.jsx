@@ -1,4 +1,4 @@
-export default function CompletedTasks({ tasks, updateTasks }) {
+export default function UncompletedTasks({ tasks, updateTasks}) {
 
     const handleCheckbox = async (taskId) => {
         const response = await fetch(`/api/tasks/${taskId}`, {
@@ -7,13 +7,13 @@ export default function CompletedTasks({ tasks, updateTasks }) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                completed: false
+                completed: true
             })
         })
 
         if(!response.ok) {
             console.error('Failed to update task')
-
+            
             return
         }
         else {
@@ -25,18 +25,18 @@ export default function CompletedTasks({ tasks, updateTasks }) {
         await fetch(`/api/tasks/${taskId}`, {
             method: 'DELETE'
         })
-        // update state after removing completed task
+        // update state after removing task
         updateTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
     }
-
+    
     return (
         <>
-            <h3>Completed Tasks</h3>
+            <h3>Tasks</h3>
             {tasks && tasks.length > 0 ? (
                 tasks.map((task) => (
-                    <div className="completed-task-container" key={task._id}>
+                    <div className="uncompleted-task-container" key={task._id}>
                         <label>
-                            <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked readOnly />
+                            <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked={false} readOnly />
                             {task.task}
                         </label>
 
@@ -46,7 +46,7 @@ export default function CompletedTasks({ tasks, updateTasks }) {
                     </div>
                 ))
                 ) : (
-                    <p>No tasks completed</p>
+                    <p>No new tasks</p>
             )}
         </>
     )

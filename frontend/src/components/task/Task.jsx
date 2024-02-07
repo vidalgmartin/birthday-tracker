@@ -8,7 +8,6 @@ export default function Task() {
     const [completedTasks, setCompletedTasks] = useState([])
 
     const fetchTasks = async () => {
-
         const uncompletedResponse = await fetch('/api/uncompletedTasks')
         const completedResponse = await fetch('/api/completedTasks')
 

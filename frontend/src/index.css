@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-    --font-color: rgb(49, 49, 49);
-    --main-color: rgb(255, 239, 239);
-    --secondary-color: rgb(255, 239, 239);
+    --font-color: rgb(224, 223, 223);
+    --main-color: rgb(62, 62, 62);
+    --background-color: rgb(47, 45, 45);
     --border-color: rgb(128, 127, 127);
+    --button-color: rgb(221, 91, 48);
 }
 
 * {
@@ -14,7 +15,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--secondary-color);
+    background-color: var(--background-color);
 }
 
 /* 
@@ -92,6 +93,7 @@ body {
  */
  .task-components {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
  }
@@ -100,10 +102,40 @@ body {
     display: grid;
     place-items: center;
     width: 650px;
-    height: 150px;
-    border-radius: 8px;
+    height: 100px;
+    border-radius: 4px;
 
     border: 1px solid black;
+}
+
+.task-form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--main-color);
+    border-radius: 4px;
+
+    background-color: var(--main-color);
+}
+
+.task-form-container form input {
+    width: 90%;
+    height: 30%;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--font-color);
+}
+
+.task-form-container form button {
+    width: 90%;
+    height: 30%;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--button-color);
+    color: var(--font-color);
 }
 
 .uncompleted-task-container {

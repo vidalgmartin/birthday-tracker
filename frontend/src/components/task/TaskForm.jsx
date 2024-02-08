@@ -38,16 +38,15 @@ export default function TaskForm({ updateTasks }) {
 
     return (
         <div className="task-form-container">
-
             <form onSubmit={handleSubmit}>
-                <label>Task:</label>
                 <input
                     className="task-input"
+                    placeholder=" Todo..."
                     type="text"
                     onChange={(e) => setTask(e.target.value)}
                     value={task}
                 />
-                <button>Submit</button>
+                <button>Add new task</button>
                 {error && <div className="error">{error}</div>}
             </form>
 

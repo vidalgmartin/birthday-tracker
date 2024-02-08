@@ -82,7 +82,6 @@ export default function UncompletedTasks({ tasks, updateTasks}) {
     
     return (
         <>
-            <h3>Tasks</h3>
             {tasks && tasks.length > 0 ? (
                 tasks.map((task) => (
                     <div className="uncompleted-task-container" key={task._id}>
@@ -102,14 +101,17 @@ export default function UncompletedTasks({ tasks, updateTasks}) {
                             <>
                                 <label>
                                     <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked={false} readOnly />
-                                    {task.task}
+                                    <p>
+                                        {task.task}
+                                    </p>
+                                    
                                 </label>
 
                                 <div>
                                     <button className="task-edit" onClick={() => handleEdit(task._id, task.task)}>
                                         Edit
                                     </button>
-
+                                    
                                     <button className="task-delete" onClick={() => handleDelete(task._id)}>
                                         Delete
                                     </button>

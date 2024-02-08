@@ -31,7 +31,6 @@ export default function CompletedTasks({ tasks, updateTasks }) {
 
     return (
         <>
-            <h3>Completed Tasks</h3>
             {tasks && tasks.length > 0 ? (
                 tasks.map((task) => (
                     <div className="completed-task-container" key={task._id}>

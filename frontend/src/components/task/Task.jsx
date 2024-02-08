@@ -42,19 +42,22 @@ export default function Task() {
     }
 
     return (
-        <>
-            <div className="task-components">
+        <div className="task-components">
 
+            <TaskForm updateTasks={updateUncompletedTasks} />
+            
+            <div className="task-status-component">
                 <div>
-                    <TaskForm updateTasks={updateUncompletedTasks} />
+                    <h3>Tasks</h3>
+                    <UncompletedTasks tasks={uncompletedTasks} updateTasks={updateUncompletedTasks} />
                 </div>
 
                 <div>
-                    <UncompletedTasks tasks={uncompletedTasks} updateTasks={updateUncompletedTasks} />
+                    <h3>Completed Tasks</h3>
                     <CompletedTasks tasks={completedTasks} updateTasks={updateCompletedTasks} />
                 </div>
-                
             </div>
-        </>
+        
+        </div>
     )
 }

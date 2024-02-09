@@ -99,23 +99,17 @@ export default function UncompletedTasks({ tasks, updateTasks}) {
                             </>
                         ) : (
                             <>
-                                <label>
-                                    <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked={false} readOnly />
-                                    <p>
-                                        {task.task}
-                                    </p>
-                                    
-                                </label>
+                                <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked={false} readOnly />
 
-                                <div>
-                                    <button className="task-edit" onClick={() => handleEdit(task._id, task.task)}>
-                                        Edit
-                                    </button>
-                                    
-                                    <button className="task-delete" onClick={() => handleDelete(task._id)}>
-                                        Delete
-                                    </button>
-                                </div>
+                                <p>{task.task}</p>
+
+                                <button className="task-edit" onClick={() => handleEdit(task._id, task.task)}>
+                                    Edit
+                                </button>
+
+                                <button className="task-delete" onClick={() => handleDelete(task._id)}>
+                                    Delete
+                                </button>
                             </>
                         )}
                     </div>

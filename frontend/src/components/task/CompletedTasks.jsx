@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
+
 export default function CompletedTasks({ tasks, updateTasks }) {
 
     const handleCheckbox = async (taskId) => {
@@ -37,14 +40,11 @@ export default function CompletedTasks({ tasks, updateTasks }) {
                         <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked readOnly />
 
                         <p>{task.task}</p>
-                        
-                        <button className="task-delete" onClick={() => handleDelete(task._id)}>
-                            Delete
-                        </button>
+                        <FontAwesomeIcon className="task-delete" onClick={() => handleDelete(task._id)} icon={faCircleMinus} />
                     </div>
                 ))
                 ) : (
-                    <p>No tasks completed</p>
+                    <p className="no-tasks">No tasks completed</p>
             )}
         </>
     )

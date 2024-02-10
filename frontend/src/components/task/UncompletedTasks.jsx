@@ -1,4 +1,8 @@
 import {  useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
 
 export default function UncompletedTasks({ tasks, updateTasks}) {
     const [editTaskId, setEditTaskId] = useState(null)
@@ -88,14 +92,13 @@ export default function UncompletedTasks({ tasks, updateTasks}) {
                         {editTaskId === task._id ? (
                             <>
                                 <input
+                                    className="edit-input"
                                     type="text"
                                     value={editTaskText}
                                     onChange={(e) => setEditTaskText(e.target.value)}
                                 />
 
-                                <button onClick={handleSave}>
-                                    Save
-                                </button>
+                                <FontAwesomeIcon className="task-save" onClick={handleSave} icon={faFloppyDisk} />
                             </>
                         ) : (
                             <>
@@ -103,19 +106,15 @@ export default function UncompletedTasks({ tasks, updateTasks}) {
 
                                 <p>{task.task}</p>
 
-                                <button className="task-edit" onClick={() => handleEdit(task._id, task.task)}>
-                                    Edit
-                                </button>
+                                <FontAwesomeIcon className="task-edit" onClick={() => handleEdit(task._id, task.task)} icon={faPenToSquare} />
 
-                                <button className="task-delete" onClick={() => handleDelete(task._id)}>
-                                    Delete
-                                </button>
+                                <FontAwesomeIcon className="task-delete" onClick={() => handleDelete(task._id)} icon={faCircleMinus} />
                             </>
                         )}
                     </div>
                 ))
             ) : (
-                <p>No new tasks</p>
+                <p className="no-tasks">No new tasks</p>
             )}
         </>
     )

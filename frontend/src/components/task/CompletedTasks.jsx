@@ -35,9 +35,9 @@ export default function CompletedTasks({ tasks, updateTasks }) {
                 tasks.map((task) => (
                     <div className="completed-task-container" key={task._id}>
                         <input type="checkbox" onClick={() => handleCheckbox(task._id)} checked readOnly />
-                        
-                        <p>{task.task}</p>
 
+                        <p>{task.task}</p>
+                        
                         <button className="task-delete" onClick={() => handleDelete(task._id)}>
                             Delete
                         </button>

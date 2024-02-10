@@ -41,12 +41,12 @@ export default function TaskForm({ updateTasks }) {
             <form onSubmit={handleSubmit}>
                 <input
                     className="task-input"
-                    placeholder=" Todo..."
+                    placeholder=" Something Todo..."
                     type="text"
                     onChange={(e) => setTask(e.target.value)}
                     value={task}
                 />
-                <button>Add new task</button>
+                <button>Add task</button>
                 {error && <div className="error">{error}</div>}
             </form>
 

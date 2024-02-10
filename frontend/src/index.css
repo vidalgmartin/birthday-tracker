@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-    --font-color: rgb(224, 223, 223);
+    --font-color: rgb(238, 227, 227);
     --main-color: rgb(62, 62, 62);
     --background-color: rgb(47, 45, 45);
     --border-color: rgb(107, 106, 106);
@@ -26,7 +26,8 @@ body {
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 10vh;
+    height: 12vh;
+    margin-bottom: 20px;
     box-shadow: 0 2px 4px 0 black;
     background-color: var(--main-color);
 }
@@ -35,11 +36,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1350px;
+    width: 1300px;
     height: 50px;
     position: relative;
     background-color: var(--main-color);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 16px;
 }
 
@@ -81,11 +82,9 @@ body {
 }
 
 .task-page {
-    display: flex;
-    justify-content: center;
-    align-items: top;
+    
     width: 100vw;
-    height: 50vh;
+    height: 80vh;
 
     border: 1px solid black;
 }
@@ -109,7 +108,7 @@ body {
     margin-bottom: 10px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    box-shadow: 0 4px 4px 0 black;
+    box-shadow: 0 2px 4px 0 black;
     background-color: var(--main-color)
  }
 
@@ -137,27 +136,26 @@ body {
     height: 100%;
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    box-shadow: 0 4px 4px 0 black;
+    box-shadow: 0 2px 4px 0 black;
     background-color: var(--main-color);
 }
 
 .task-form-container form input {
-    width: 90%;
+    width: 80%;
     height: 30%;
     border: none;
     margin-bottom: 10px;
-    border-radius: 4px;
-    background-color: var(--font-color);
+    border-bottom: 2px solid var(--font-color);
+    background-color: var(--main-color);
 }
 
 .task-form-container form button {
-    width: 90%;
+    width: 20%;
     height: 30%;
     border: none;
     border-radius: 4px;
     background-color: var(--button-color);
     color: var(--font-color);
-    box-shadow: 0 1px 0 0 var(--font-color);
 }
 
 .uncompleted-task-container {

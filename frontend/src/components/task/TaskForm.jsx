@@ -38,16 +38,18 @@ export default function TaskForm({ updateTasks }) {
 
     return (
         <div className="task-form-container">
+
             <form onSubmit={handleSubmit}>
                 <input
                     className="task-input"
-                    placeholder=" Something Todo..."
+                    placeholder="Something Todo... (Max length: 100 Characters)"
                     type="text"
+                    maxLength="100"
                     onChange={(e) => setTask(e.target.value)}
                     value={task}
                 />
-                <button>Add task</button>
                 {error && <div className="error">{error}</div>}
+                <button>Add task</button>
             </form>
 
         </div>

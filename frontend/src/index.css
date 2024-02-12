@@ -11,7 +11,7 @@
 * {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 body {
@@ -46,27 +46,15 @@ body {
     border-radius: 16px;
 }
 
-.icon {
+.name {
     margin-left: 10px;
     color: var(--font-color);
 }
 
-.links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.links * {
+.last-name * {
     padding: 10px;
     color: var(--font-color);
     text-decoration: none;
-}
-
-.links *:hover {
-    text-decoration: underline;
-    color: white;
 }
 
 @media (max-width: 1024px) {
@@ -95,20 +83,40 @@ body {
 /*
  * pages
  */
- .home-page {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.home-page * {
-    max-width: 200px;
-}
-
 .task-page {
     width: 100vw;
     height: 80vh;
     margin-top: 180px;
+}
+
+@media (max-width: 1200px) {
+    .task-page {
+        margin-top: 140px;
+    }
+}
+
+@media (max-width: 992px) {
+    .task-page {
+        margin-top: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .task-page {
+        margin-top: 110px;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-page {
+        margin-top: 95px;
+    }
+}
+
+@media (max-width: 320px) {
+    .task-page {
+        margin-top: 90px;
+    }
 }
 
 /*
@@ -122,6 +130,7 @@ body {
 }
 
 .task-components h3 {
+    font-size: 18px;
     color: var(--font-color);
 }
 
@@ -168,7 +177,17 @@ input[type="checkbox"] {
     color: var(--font-color);
 }
 
+@media (max-width: 480px) {
+    .task-components h3 {
+        font-size: 16px;
+    }
+}
 
+@media (max-width: 320px) {
+    .task-components h3 {
+        font-size: 14px;
+    }
+}
 
 /* task form */
 .task-form-container {
@@ -199,10 +218,15 @@ input[type="checkbox"] {
     height: 30%;
     border: none;
     margin-bottom: 10px;
+    text-align: center;
     font-size: 14px;
     border-bottom: 2px solid var(--font-color);
     background-color: var(--main-color);
 }
+
+.task-form-container form input:focus {
+    text-align: left;
+  }
 
 .task-form-container  form input:focus {
     outline: none;
@@ -230,14 +254,53 @@ input[type="checkbox"] {
     color: var(--font-color);
 }
 
-@media (max-width: 786px) {
+@media (max-width: 1200px) {
     .task-form-container form input {
-        width: 50%;
+        width: 80%;
+    }
+}
+
+@media (max-width: 992px) {
+    .task-form-container form input {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .task-form-container form input {
+        width: 75%;
+        font-size: 12px;
     }
 
     .task-form-container form button {
         width: 15%;
         height: 25%;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-form-container form input {
+        width: 50%;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .task-form-container form button {
+        width: 12%;
+        height: 25%;
+    }
+}
+
+@media (max-width: 320px) {
+    .task-form-container form input {
+        width: 40%;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .task-form-container form button {
+        width: 12%;
+        height: 22%;
     }
 }
 
@@ -259,7 +322,7 @@ input[type="checkbox"] {
 }
 
 .uncompleted-task-container p {
-    font-size: 1rem;
+    font-size: 16px;
     text-align: left;
     width: 75%;
 }
@@ -284,6 +347,57 @@ input[type="checkbox"] {
     color: var(--font-color);
 }
 
+@media (max-width: 768px) {
+    .uncompleted-task-container {
+        width: 95%;
+        border: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .uncompleted-task-container {
+        width: 55%;
+    }
+
+    .uncompleted-task-container input {
+        width: 3%;
+    }
+
+    .uncompleted-task-container p {
+        font-size: 14px;
+    }
+
+    .task-edit {
+        font-size: 20px;
+    }
+
+    .task-delete {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .uncompleted-task-container {
+        width: 50%;
+    }
+
+    .uncompleted-task-container input {
+        width: 4%;
+    }
+
+    .uncompleted-task-container p {
+        font-size: 12px;
+    }
+
+    .task-edit {
+        font-size: 15px;
+    }
+
+    .task-delete {
+        font-size: 15px;
+    }
+}
+
 /* completed task */
 .completed-task-container {
     display: flex;
@@ -303,6 +417,7 @@ input[type="checkbox"] {
 
 .completed-task-container p {
     width: 85%;
+    font-size: 16px;
     text-align: left;
     text-decoration-line: line-through;
     color: rgba(238, 227, 227, 0.5);
@@ -313,3 +428,53 @@ input[type="checkbox"] {
     border: 1px solid white;
 }
 
+@media (max-width: 768px) {
+    .completed-task-container {
+        width: 95%;
+        border: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .completed-task-container {
+        width: 55%;
+    }
+
+    .completed-task-container input {
+        width: 3%;
+    }
+
+    .completed-task-container p {
+        font-size: 14px;
+    }
+
+    .task-edit {
+        font-size: 20px;
+    }
+
+    .task-delete {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .completed-task-container {
+        width: 50%;
+    }
+
+    .completed-task-container input {
+        width: 4%;
+    }
+
+    .completed-task-container p {
+        font-size: 12px;
+    }
+
+    .task-edit {
+        font-size: 15px;
+    }
+
+    .task-delete {
+        font-size: 15px;
+    }
+}

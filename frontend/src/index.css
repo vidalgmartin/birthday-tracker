@@ -87,6 +87,7 @@ body {
     width: 100vw;
     height: 80vh;
     margin-top: 180px;
+    overflow-x: hidden;
 }
 
 @media (max-width: 1200px) {
@@ -127,7 +128,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
 }
 
 .task-components h3 {

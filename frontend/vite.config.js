@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://mern-todo-app-rbk4.onrender.com',
+        target: 'http://localhost:5001',
         changeOrigin: true
       }
     }

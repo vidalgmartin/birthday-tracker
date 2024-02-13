@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 
 // routes
-app.use('/api', taskRoutes)
+app.use('https://mern-todo-app-rbk4.onrender.com/api', taskRoutes)
 
 // connect to MongoDB atlas
 mongoose.connect(process.env.MONGO_URI)

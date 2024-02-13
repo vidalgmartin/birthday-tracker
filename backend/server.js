@@ -1,7 +1,7 @@
 // module imports
 const express = require('express')
 const mongoose = require('mongoose')
-const taskRoutes = require('./routes')
+const taskRoutes = require('./routes/tasks')
 
 // environmental variables 
 require('dotenv').config()

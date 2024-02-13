@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 // task model
-const Task = require('./taskSchema')
+const Task = require('../taskSchema')
 
 // GET all uncompleted tasks
 router.get('/uncompletedTasks', async (req, res) => {

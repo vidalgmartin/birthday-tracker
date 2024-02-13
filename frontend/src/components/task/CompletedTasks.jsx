@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
+import { backendUrl } from '../../backendUrl'
 
 export default function CompletedTasks({ tasks, updateTasks }) {
 
     const handleCheckbox = async (taskId) => {
-        const response = await fetch(`/api/tasks/${taskId}`, {
+        const response = await fetch(`${backendUrl}/api/tasks/${taskId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,7 +26,7 @@ export default function CompletedTasks({ tasks, updateTasks }) {
     }
 
     const handleDelete = async (taskId)  => {
-        await fetch(`/api/tasks/${taskId}`, {
+        await fetch(`${backendUrl}/api/tasks/${taskId}`, {
             method: 'DELETE'
         })
         // update state after removing completed task

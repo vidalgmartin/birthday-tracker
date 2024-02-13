@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+import { backendUrl } from '../../backendUrl'
 
 export default function UncompletedTasks({ tasks, updateTasks}) {
     const [editTaskId, setEditTaskId] = useState(null)
     const [editTaskText, setEditTaskText] = useState('')
 
     const handleCheckbox = async (taskId) => {
-        const response = await fetch(`/api/tasks/${taskId}`, {
+        const response = await fetch(`${backendUrl}/api/tasks/${taskId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,7 +31,7 @@ export default function UncompletedTasks({ tasks, updateTasks}) {
     }
 
     const handleDelete = async (taskId)  => {
-        await fetch(`/api/tasks/${taskId}`, {
+        await fetch(`${backendUrl}/api/tasks/${taskId}`, {
             method: 'DELETE'
         })
         // update state after removing task
@@ -51,7 +52,7 @@ export default function UncompletedTasks({ tasks, updateTasks}) {
             return
         }
         
-        const response = await fetch(`/api/tasks/${editTaskId}`, {
+        const response = await fetch(`${backendUrl}/api/tasks/${editTaskId}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

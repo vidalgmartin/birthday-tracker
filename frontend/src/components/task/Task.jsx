@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react'
 import UncompletedTasks from './UncompletedTasks'
 import CompletedTasks from './CompletedTasks'
 import TaskForm from './TaskForm'
+import { backendUrl } from '../../backendUrl'
 
 export default function Task() {
     const [uncompletedTasks, setUncompletedTasks] = useState([])
     const [completedTasks, setCompletedTasks] = useState([])
 
     const fetchTasks = async () => {
-        const uncompletedResponse = await fetch('https://mern-todo-app-rbk4.onrender.com/api/uncompletedTasks')
-        const completedResponse = await fetch('https://mern-todo-app-rbk4.onrender.com/api/completedTasks')
+        const uncompletedResponse = await fetch(`${backendUrl}/api/uncompletedTasks`)
+        const completedResponse = await fetch(`${backendUrl}/api/completedTasks`)
 
         if (!uncompletedResponse.ok || !completedResponse.ok) {
             console.error('Failed to fetch tasks')

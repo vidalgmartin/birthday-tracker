@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { backendUrl } from '../../backendUrl'
 
 export default function TaskForm({ updateTasks }) {
     const [ task, setTask ] = useState('')
@@ -12,7 +13,7 @@ export default function TaskForm({ updateTasks }) {
             return
         }
 
-        const response = await fetch('/api/tasks', {
+        const response = await fetch(`${backendUrl}/api/tasks`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

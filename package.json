@@ -7,6 +7,6 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "cors": "^2.8.5",
     "fontawesome-free": "^1.0.4",
-    "vercel": "^33.5.0"
+    "vercel": "^33.5.1"
   }
 }

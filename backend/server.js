@@ -10,10 +10,8 @@ require('dotenv').config()
 // variable to initialize an Express.js web application
 const app  = express()
 
-// allow request from frontend domain
-app.use(cors({
-    origin: 'https://todo-irm9algda-martins-projects-e51ca9c5.vercel.app/'
-}))
+// allow all incoming requests
+app.use(cors())
 
 // middleware for parsing json in the request body
 app.use(express.json())

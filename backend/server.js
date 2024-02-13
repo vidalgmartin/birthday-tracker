@@ -1,6 +1,7 @@
 // module imports
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const taskRoutes = require('./routes/tasks')
 
 // environmental variables 
@@ -8,6 +9,11 @@ require('dotenv').config()
 
 // variable to initialize an Express.js web application
 const app  = express()
+
+// allow request from frontend domain
+app.use(cors({
+    origin: 'https://todo-irm9algda-martins-projects-e51ca9c5.vercel.app/'
+}))
 
 // middleware for parsing json in the request body
 app.use(express.json())

@@ -9,7 +9,7 @@ export default function Task() {
 
     const fetchTasks = async () => {
         const uncompletedResponse = await fetch('https://mern-todo-app-rbk4.onrender.com/api/uncompletedTasks')
-        const completedResponse = await fetch('/api/completedTasks')
+        const completedResponse = await fetch('https://mern-todo-app-rbk4.onrender.com/api/completedTasks')
 
         if (!uncompletedResponse.ok || !completedResponse.ok) {
             console.error('Failed to fetch tasks')

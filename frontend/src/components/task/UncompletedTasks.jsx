@@ -7,7 +7,6 @@ import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
 export default function UncompletedTasks({ tasks, updateTasks}) {
     const [editTaskId, setEditTaskId] = useState(null)
     const [editTaskText, setEditTaskText] = useState('')
-    
 
     const handleCheckbox = async (taskId) => {
         const response = await fetch(`/api/tasks/${taskId}`, {

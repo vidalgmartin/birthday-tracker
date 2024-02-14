@@ -315,6 +315,7 @@ input[type="checkbox"] {
     border: 1px solid var(--border-color);
     background-color: var(--main-color);
     color: var(--font-color);
+    overflow-x: hidden;
 }
 
 .uncompleted-task-container input {
@@ -409,6 +410,7 @@ input[type="checkbox"] {
     border: 1px solid var(--border-color);
     background-color: var(--main-color);
     color: var(--font-color);
+    overflow-x: hidden;
 }
 
 .completed-task-container input {

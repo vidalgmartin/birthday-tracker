@@ -223,6 +223,7 @@ input[type="checkbox"] {
     font-size: 14px;
     border-bottom: 2px solid var(--font-color);
     background-color: var(--main-color);
+    color: var(--font-color);
 }
 
 .task-form-container form input:focus {

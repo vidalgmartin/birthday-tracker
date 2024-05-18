@@ -14,4 +14,4 @@ const taskSchema = new  mongoose.Schema({
 })
 
 // define and export the task model for the database
-module.exports = mongoose.model('Task', taskSchema)
+module.exports = mongoose.model('Task', taskSchema, 'tasks')

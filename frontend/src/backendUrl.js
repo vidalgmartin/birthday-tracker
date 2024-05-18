@@ -1,1 +1,1 @@
-export const backendUrl = 'https://mern-todo-app-rbk4.onrender.com'
+export const backendUrl = 'https://todo-app-ex50.onrender.com'
